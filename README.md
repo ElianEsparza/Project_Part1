@@ -30,16 +30,47 @@ This project is the first part of a multi-part assignment to design and implemen
    cd <repository_directory>
    
 ## Part 2: Process Representation
-In Part 2, we extend our OS simulator by adding a `Process` class that represents an operating system process. This class includes attributes such as:
-- **Process ID (pid)**
-- **Arrival Time**
-- **Burst Time**
-- **Priority**
-- **State** (using an enum: NEW, READY, RUNNING, WAITING, TERMINATED)
-- **Remaining Time**
-- **Waiting Time**
-- **Turnaround Time**
-- **Memory Required**
-- **I/O Operations** (optional)
 
-The `Process` class also provides methods to update its state and decrement its remaining execution time, forming the basis for process scheduling and state transitions.
+In Part 2, we extend our OS simulator by adding a `Process` class that represents an operating system process. This class is essential for simulating process scheduling and management in our simulator.
+
+### Process Class Overview
+
+The `Process` class encapsulates key attributes of an OS process:
+- **Process ID (pid):** A unique identifier for each process.
+- **Arrival Time:** The time when the process enters the system.
+- **Burst Time:** The total CPU time required for the process to complete.
+- **Priority:** The importance of the process relative to others.
+- **State:** The current state of the process, represented by an `enum class ProcessState` with values:
+  - `NEW`: Process is newly created.
+  - `READY`: Process is ready to execute.
+  - `RUNNING`: Process is currently executing.
+  - `WAITING`: Process is waiting for an event (e.g., I/O).
+  - `TERMINATED`: Process has completed execution.
+- **Remaining Time:** The amount of CPU time left for the process to finish.
+- **Waiting Time:** The total time the process spends waiting in the ready queue.
+- **Turnaround Time:** The overall time from process arrival to its completion.
+- **Memory Required:** The memory needed by the process.
+- **I/O Operations:** (Optional) A list of I/O operations the process will perform.
+
+### Key Methods
+
+- **Constructor:**  
+  Initializes all the process attributes. It sets the initial state to `NEW`, assigns the burst time to remaining time, and defaults I/O operations to an empty list if none are provided.
+- **Setters and Getters:**  
+  Allow controlled access and updates to process attributes.
+- **State Update and Execution Simulation:**  
+  A method to decrement the remaining execution time. When the remaining time reaches zero, the process state is updated to `TERMINATED`.
+
+### Why This Matters
+
+Implementing the `Process` class lays the foundation for future enhancements in our OS simulator, such as:
+- Implementing different scheduling algorithms (e.g., round-robin, priority-based).
+- Managing process state transitions.
+- Incorporating memory management and I/O handling.
+
+### Updated Compilation and Running Instructions
+
+To compile the complete project (Parts 1 & 2), use:
+```bash
+g++ -std=c++17 main.cpp auth.cpp system.cpp process.cpp -o os_simulator
+
