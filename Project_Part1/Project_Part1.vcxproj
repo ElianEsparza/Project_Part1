@@ -129,10 +129,12 @@
   <ItemGroup>
     <ClCompile Include="auth.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="process.cpp" />
     <ClCompile Include="system.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="auth.h" />
+    <ClInclude Include="process.h" />
     <ClInclude Include="system.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
