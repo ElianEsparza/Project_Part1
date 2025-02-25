@@ -28,3 +28,18 @@ This project is the first part of a multi-part assignment to design and implemen
    ```bash
    git clone <repository_url>
    cd <repository_directory>
+   
+## Part 2: Process Representation
+In Part 2, we extend our OS simulator by adding a `Process` class that represents an operating system process. This class includes attributes such as:
+- **Process ID (pid)**
+- **Arrival Time**
+- **Burst Time**
+- **Priority**
+- **State** (using an enum: NEW, READY, RUNNING, WAITING, TERMINATED)
+- **Remaining Time**
+- **Waiting Time**
+- **Turnaround Time**
+- **Memory Required**
+- **I/O Operations** (optional)
+
+The `Process` class also provides methods to update its state and decrement its remaining execution time, forming the basis for process scheduling and state transitions.
