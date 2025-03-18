@@ -68,9 +68,63 @@ Implementing the `Process` class lays the foundation for future enhancements in 
 - Managing process state transitions.
 - Incorporating memory management and I/O handling.
 
+## Part 3: Process Scheduling Simulation – FCFS and SJF
+
+In Part 3, we implement process scheduling algorithms to simulate how an operating system allocates CPU time to different processes. We focus on two fundamental scheduling algorithms: First-Come, First-Served (FCFS) and Shortest Job First (SJF) in both preemptive and non-preemptive variants.
+
+### Scheduling Algorithms Implemented
+
+1. **First-Come, First-Served (FCFS)**
+   - The simplest scheduling algorithm that executes processes in the order they arrive
+   - Non-preemptive by nature
+   - Easy to implement but can lead to the "convoy effect" where short processes wait behind long ones
+
+2. **Shortest Job First (SJF) - Non-preemptive**
+   - Selects the process with the shortest burst time among all ready processes
+   - Once a process starts executing, it runs to completion without interruption
+   - Optimal for minimizing average waiting time when all processes are available simultaneously
+
+3. **Shortest Job First (SJF) - Preemptive (also known as Shortest Remaining Time First)**
+   - Similar to non-preemptive SJF, but allows interruption when a new process with shorter burst time arrives
+   - The currently running process is preempted if a newly arrived process has a shorter remaining time
+   - Provides better response times for short processes
+
+### Key Components
+
+- **Scheduler Class**: Manages the scheduling algorithms and process execution
+- **Process Results**: Tracks performance metrics for each process
+- **Scheduling Results**: Aggregates metrics across all processes for a given algorithm
+- **Gantt Chart Visualization**: Displays the execution timeline for better understanding
+
+### Performance Metrics
+
+For each scheduling algorithm, we calculate and compare:
+- **Completion Time**: When each process finishes execution
+- **Turnaround Time**: Total time from arrival to completion (Completion Time - Arrival Time)
+- **Waiting Time**: Time spent waiting in the ready queue (Turnaround Time - Burst Time)
+- **Average Turnaround Time**: Mean turnaround time across all processes
+- **Average Waiting Time**: Mean waiting time across all processes
+
+### Implementation Details
+
+The implementation uses a modular approach with the following structure:
+- `SchedAlg` enum class: Defines the supported scheduling algorithms
+- `ProcResult` struct: Stores individual process metrics
+- `SchedResult` struct: Aggregates results and statistics
+- `Scheduler` class: Implements the core scheduling logic
+
+### Significance in OS Design
+
+Process scheduling is a fundamental aspect of operating system design that directly impacts:
+- System throughput
+- CPU utilization
+- Process response times
+- Overall system efficiency
+
+By implementing and comparing different scheduling algorithms, we gain insights into their strengths, weaknesses, and appropriate use cases in real operating systems.
+
 ### Updated Compilation and Running Instructions
 
-To compile the complete project (Parts 1 & 2), use:
+To compile the complete project (Parts 1, 2 & 3), use:
 ```bash
-g++ -std=c++17 main.cpp auth.cpp system.cpp process.cpp -o os_simulator
-
+g++ -std=c++17 main.cpp auth.cpp system.cpp process.cpp scheduler.cpp -o os_simulator
