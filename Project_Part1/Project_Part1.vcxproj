@@ -129,15 +129,20 @@
   <ItemGroup>
     <ClCompile Include="auth.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="page_table.cpp" />
     <ClCompile Include="process.cpp" />
     <ClCompile Include="scheduler.cpp" />
     <ClCompile Include="system.cpp" />
+    <ClCompile Include="vm_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="auth.h" />
+    <ClInclude Include="page_table.h" />
     <ClInclude Include="process.h" />
     <ClInclude Include="scheduler.h" />
     <ClInclude Include="system.h" />
+    <ClInclude Include="vm_config.h" />
+    <ClInclude Include="vm_manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
